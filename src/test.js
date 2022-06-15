@@ -1,8 +1,3 @@
-import './App.css';
-import React from 'react'
-
-function App() {
-
   const user = '0xvoider42';
   const apiCall = 'gists';
   const gistStore = [];
@@ -17,13 +12,4 @@ function App() {
     console.log(gistStore)
   }
 
-  return (
-    <div className="App">
-      <header className="App-header">
-        <button className="getGists" onClick={gitCall}>Gists</button>
-      </header>
-    </div>
-  );
-}
-
-export default App;
+  gitCall()
