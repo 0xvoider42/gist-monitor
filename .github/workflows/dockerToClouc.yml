@@ -9,9 +9,9 @@ jobs:
     name: Build and Push to GCP
     runs-on: ubuntu-latest
     env:
-      NAME: gist-monitor
+      IMAGE_NAME: gist-monitor
       PROJECT_ID: crucial-venture-353512
-   steps:
+    steps:
     - name: Checkout
       uses: actions/checkout@v2
 
