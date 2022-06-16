@@ -1,7 +1,7 @@
 const pipedrive = require('pipedrive');
 
 const client = pipedrive.ApiClient.instance;
-client.authentications.api_key.apiKey = 'eaa383cda8865ec5eff3be3c7d9ed982dddb4bca';
+client.authentications.api_key.apiKey = 'your pipedrive key goes here';
 const user = '0xvoider42';
 const apiCall = 'gists';
 let gistStore = [];
@@ -11,14 +11,14 @@ let gistDescription = [];
 let descriptionToString;
 let gistURL = [];
 let gistURLtoString;
-let lastTime = 0;
 
 const gitCall = async () => {
+  // fetches api endpoint
     const response = await fetch(`https://api.github.com/users/${user}/${apiCall}`);
     const data = await response.json();
     const gists = await data;
-    let newArr = gists.length;
 
+  // distilles general calls to the ones required to submit an activity
     gists.forEach(gist => gistStore.push(gist.files));
     gists.forEach(gist => gistDescription.push(gist.description));
     gists.forEach(gist => gistURL.push(gist.html_url));
@@ -27,24 +27,15 @@ const gitCall = async () => {
     gistFileName = gistNames.toString().split(',');
     descriptionToString = gistDescription.toString().split(',');
 
+  // recursive call to submit new gists to the activities
     const checkGists = () => {
-      if(gistStore.length === newArr.length){
-        console.log("there are no new gists")
-      }else {
         for(let i = 0; i< gistFileName.length; i++){
            addActivity(gistFileName[i], descriptionToString[i], gistURLtoString[i])
         }
-      }
-    }
-    
-    
-    if(Math.floor((new Date() - lastTime)/60000) < 2) {
-    } else {
-      lastTime= new Date()
     }
 
     // checks for new Gists once every hour
-    setInterval(checkGists, 10 * 1000)
+    setInterval(checkGists, 60 * 60 * 1000)
   }
 
 

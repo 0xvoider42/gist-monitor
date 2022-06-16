@@ -1,47 +1,39 @@
-import './App.css';
-import React, {useState} from 'react'
-import { PIPEDRIVE_TOKEN } from './config.js'
+import React, {useState, useEffect} from 'react'
+import { gitCall } from './CreateActivity'
 
 function App() {
-
-  const [names, setName] = useState([]);
-  const user = '0xvoider42';
-  const apiCall = 'gists';
-  const gistStore = [];
-  const gistNames = [];
-
-  const gitCall = async () => {
-    const response = await fetch(`https://api.github.com/users/${user}/${apiCall}`);
-    const data = await response.json();
-    const gists = await data;
-    for (const key in gists) {
-      gistStore.push(gists[key].files);
-    }
-
-    gistStore.forEach(gist => {
-      for(let key in gist) {
-        gistNames.push(gist[key].filename);
-      }
-    })
-    setName(gistNames)
-  }
-
-  const pipeDriveCall = async () => {
-    const response = await fetch(`https://api.pipedrive.com/v1/globalMessages?api_token=${PIPEDRIVE_TOKEN}`)
-    const data = await response.json();
-    console.log(data)
-  }
+  const Timer = () => {
+    const [ minutes, setMinutes ] = useState(120);
+    const [seconds, setSeconds ] =  useState(0);
+    useEffect(()=>{
+    let myInterval = setInterval(() => {
+            if (seconds > 0) {
+                setSeconds(seconds - 1);
+            }
+            if (seconds === 0) {
+                if (minutes === 0) {
+                    clearInterval(myInterval)
+                } else {
+                    setMinutes(minutes - 1);
+                    setSeconds(59);
+                }
+            } 
+        }, 1000)
+        return ()=> {
+            clearInterval(myInterval);
+          };
+    });
+  gitCall();
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <div>
-          {names.map(name => <li>{name}</li>)}
-        </div>
-        <button className="getGists" onClick={gitCall}>Gists</button>
-      </header>
+    <div>
+      {minutes === 0 && seconds === 0 ? null :
+        <h3>Last update happened {minutes}:{seconds < 10 ?  `0${seconds}` : seconds}</h3>
+    }
+    <h1>hello</h1>
     </div>
   );
+}
 }
 
 export default App;
