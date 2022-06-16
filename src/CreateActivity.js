@@ -1,5 +1,14 @@
 const pipedrive = require('pipedrive');
 
+// remarks about the work
+// The pipedrive API documentation is hands down one of the best I have worked with,
+// no trouble with that at all, as well as with git apart from call limits :(
+// 
+// Had some trouble with figuring out the data management and the flow, 
+// in the end due to time constrains could not do the timing function:
+// which would check for the latest updates to the gists as well as filter them
+// Front-end did not work out as expected as well
+
 const client = pipedrive.ApiClient.instance;
 client.authentications.api_key.apiKey = 'your pipedrive key goes here';
 const user = '0xvoider42';
@@ -17,6 +26,7 @@ const gitCall = async () => {
     const response = await fetch(`https://api.github.com/users/${user}/${apiCall}`);
     const data = await response.json();
     const gists = await data;
+    console.log('the gists have been checked', gists.length)
 
   // distilles general calls to the ones required to submit an activity
     gists.forEach(gist => gistStore.push(gist.files));
@@ -31,6 +41,7 @@ const gitCall = async () => {
     const checkGists = () => {
         for(let i = 0; i< gistFileName.length; i++){
            addActivity(gistFileName[i], descriptionToString[i], gistURLtoString[i])
+           console.log('Gists have been uploaded to the activities: ', gistFileName.length)
         }
     }
 
