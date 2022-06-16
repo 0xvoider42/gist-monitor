@@ -6,3 +6,8 @@ to run this project:
  
 The project uses GitHup and Pipedrive APIs to access the information, node.js to manipulate data.
 React.js is used for the front-end (not working)
+
+The project WIPs
+- [ ] Need to automate dockerization and upload to google cloud with github actions or Travis ci
+- [ ] figure out the storage issue to store past values of gists and compare to current
+- [ ] figure out the clean UI
