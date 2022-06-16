@@ -3,7 +3,7 @@ const pipedrive = require('pipedrive');
 // remarks about the work
 // The pipedrive API documentation is hands down one of the best I have worked with,
 // no trouble with that at all, as well as with git apart from call limits :(
-// 
+//  
 // Had some trouble with figuring out the data management and the flow, 
 // in the end due to time constrains could not do the timing function:
 // which would check for the latest updates to the gists as well as filter them
