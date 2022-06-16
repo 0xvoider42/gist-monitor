@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import { gitCall } from '../../CreateActivity'
+import { gitCall } from './CreateActivity'
 
 function App() {
   const Timer = () => {

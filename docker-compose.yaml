@@ -1,0 +1,10 @@
+version: '1'
+services:
+  gist-monitor:
+    build: ./dockerized
+    container_name: gist-m
+    ports:
+      - '3000:3000'
+    stdin_open: true
+    
+    tty: true

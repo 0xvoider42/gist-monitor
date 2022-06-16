@@ -1,0 +1,22 @@
+language: node_js
+os: linux
+services:
+  - docker
+
+nodejs:
+  - 0.39
+
+cache: npm
+
+before_install:
+
+install:
+- yarn install
+
+script:
+- yarn test
+- yarn run build
+
+deploy: 
+
+
