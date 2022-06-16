@@ -1,0 +1,20 @@
+language: node_js
+nodejs:
+- 18.3.0
+- 16.4
+- 14.6
+
+cache: npm
+
+before_install:
+
+install:
+- yarn install
+
+script:
+- yarn test
+- yarn run build
+
+deploy: 
+
+
