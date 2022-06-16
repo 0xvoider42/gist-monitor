@@ -2,7 +2,7 @@ name: Builds and pushes project image to Google Cloud Platform
 
 on: 
   push:
-    branch: [development, main]
+    branch: [development]
 
 jobs:
   build-push-gcr:
