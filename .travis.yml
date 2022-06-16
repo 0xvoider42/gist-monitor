@@ -1,8 +1,6 @@
 language: node_js
 nodejs:
-- 18.3.0
-- 16.4
-- 14.6
+- 0.39.1
 
 cache: npm
 
