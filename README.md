@@ -1,4 +1,7 @@
 # gist-monitor
+
+*For more up do date code, check out feature/express-implementation*
+
 to run this project:
   1. pull the development repository
   2. access the /src file
