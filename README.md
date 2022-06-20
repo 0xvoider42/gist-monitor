@@ -6,6 +6,7 @@ To test application on local machine follow the steps:
   4. run yarn start
 
 ## Dockerization and deployment
+The project uses gitHub actions where, with every *push* docker image is created and uploaded to the Hub.
 The app is dockerized and uploaded to the google cloud platform.
 The app does not have a front-end implementation and could not be deployed with google run.
 The front end will be added in the future iterations of the app as well as more thorough pipedrive API calls.
