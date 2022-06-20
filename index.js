@@ -106,6 +106,8 @@ const gitCall = async() => {
       console.log(errorToLog)
     }
   }
+// populates the local storage
+gitCall();
 
 // sets interval calls to the gitCall function
 setInterval(gitCall, 60 * 1000)
